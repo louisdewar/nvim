@@ -8,7 +8,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+let $FZF_DEFAULT_COMMAND = 'fdfind --hidden --exclude .git/'
 
 nnoremap <silent> <M-Tab> :Buffers<Cr>
 nnoremap <silent> <C-o> :Files<Cr>
