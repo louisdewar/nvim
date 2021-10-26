@@ -1,4 +1,42 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "json"],
-  "prettier.eslintIntegration": true
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "javascript",
+    "json",
+    "python",
+    "java"
+  ],
+  "prettier.eslintIntegration": true,
+  "codeLens.enable": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.jdt.ls.vmargs": "-javaagent:/usr/lib/lombok-common/lombok.jar",
+  "java.format.enabled": true,
+  "//java.format.settings.url": "/home/louisdewardt/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+  "clangd.path": "/home/louisdewardt/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "java.format.settings.url": "/home/louis/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+  "rust-analyzer.lens.run": false,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cc",
+        "cpp",
+        "c++",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
 }

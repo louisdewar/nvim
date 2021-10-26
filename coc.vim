@@ -29,7 +29,7 @@ endfunction
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format)
 
 
 " Remap keys for applying codeAction to the current buffer.

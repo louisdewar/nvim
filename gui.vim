@@ -36,3 +36,5 @@ let g:lightline = {
       \ }
 
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+" nnoremap <silent> <C-m> :MinimapToggle<Cr>

@@ -3,6 +3,7 @@ set number
 set relativenumber
 set showmatch
 set expandtab
+set shiftwidth=4
 set hidden
 " Show hidden characters
 set list
@@ -22,11 +23,6 @@ nmap <leader><leader> :b#<CR>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 
-" <Ctrl-w> exits insert mode and saves
-inoremap <C-w> <Esc> :w<CR>
-nnoremap <C-w> <Esc> :w<CR>
-vnoremap <C-w> <Esc> :w<CR>
-
 " Netrw
 let g:netrw_liststyle = 3
 
@@ -34,7 +30,15 @@ let g:netrw_liststyle = 3
 nnoremap <silent> <C-n> :Explore<Cr>
 
 " Short cuts to switch between panes
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+" <Ctrl-w> exits insert mode and saves
+inoremap <C-w> <Esc> :w<CR>
+nnoremap <C-w> <Esc> :w<CR>
+vnoremap <C-w> <Esc> :w<CR>
+
+" Live search and replace
+set inccommand=nosplit
