@@ -1,8 +1,11 @@
 -- Bootstraps packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- local packer_bootstrap = false
+
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  -- packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -17,6 +20,8 @@ vim.cmd [[packadd packer.nvim]]
 
 
 return require('packer').startup(function(use)
+
+  use 'nvim-lua/plenary.nvim'
 
   use 'morhetz/gruvbox'
   --use 'arcticicestudio/nord-vim'
@@ -38,6 +43,11 @@ return require('packer').startup(function(use)
     }
   }
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
   use 'tpope/vim-sleuth'
   use 'andymass/vim-matchup'
   -- TODO: learn and use:
@@ -48,10 +58,20 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-buffer'
 
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
+  use 'mfussenegger/nvim-dap'
   use 'simrat39/rust-tools.nvim'
 
-  if packer_bootstrap then
-    -- Something wrong with this, packer_bootstrap seems to constantly be true
-    --require('packer').sync()
-  end
+  use 'nvim-lua/lsp-status.nvim'
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
+  --if packer_bootstrap then
+  --  require('packer').sync()
+  --end
 end)

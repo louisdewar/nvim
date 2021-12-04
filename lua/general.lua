@@ -5,6 +5,7 @@ local b = vim.b
 w.number = true
 
 b.expandtab = true
+b.shiftwidth = 4
 
 o.inccommand = 'nosplit'
 o.mouse = 'a'
