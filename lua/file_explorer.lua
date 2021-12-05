@@ -2,8 +2,8 @@
 
 require('nvim-tree').setup {
     open_on_setup = true,
-    diagnositics = {
-      enabled = true,
+    diagnostics = {
+      enable = true,
     },
     view = {
         auto_resize = true,
