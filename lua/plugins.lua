@@ -18,7 +18,6 @@ vim.cmd([[
   augroup end
 ]])
 
-
 -- Packages to consider adding:
 -- - nvim-telescope/telescope.nvim
 -- - tpope/vim-surround
@@ -62,7 +61,6 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-buffer'
-  use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'nvim-lua/lsp-status.nvim'
 
