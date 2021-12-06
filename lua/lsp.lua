@@ -3,7 +3,9 @@ local lsp_status = require('lsp-status')
 local on_attach = require('lsp.attach');
 local capabilities = require('lsp.capabilities');
 
-local null_ls = require("null-ls")
+local null_ls = require('null-ls')
+
+-- vim.lsp.set_log_level('debug')
 
 null_ls.config({
     sources = {
@@ -12,13 +14,12 @@ null_ls.config({
     }
 })
 
--- -- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
+-- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
 
 lsp_status.register_progress()
 
 local servers = {
   pyright = {},
-  --rust_analyzer = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
         if client.config.flags then
@@ -34,7 +35,27 @@ local servers = {
   sumneko_lua = {
     settings = { Lua = { telemetry = { enable = false } } }
   },
-  ['null-ls'] = {}
+  ['null-ls'] = {},
+  texlab = {
+    settings = {
+      texlab = {
+        build = {
+          -- Maybe in the future:
+          -- executable = 'tectonic',
+          -- args = { '%f', '--synctex', '--keep-logs', '--keep-intermediates', '--outdir', 'out' },
+          executable = 'latexmk',
+          args = { '-pdf', '-shell-escape', '-interaction=nonstopmode', '-synctex=1', '-outdir=build', '%f' },
+          onSave = true,
+          forwardSearchAfter = true
+        },
+        forwardSearch = {
+          executable = 'zathura',
+          args = { '%p' }
+        },
+        auxDirectory = 'build'
+      }
+    }
+  }
 }
 
 
@@ -54,10 +75,7 @@ for server, extra_options in pairs(servers) do
     end
   end
 
-  vim.tbl_extend('keep', options, extra_options)
-  for _, option in ipairs(extra_options) do
-      table.insert(options, option)
-  end
+  options = vim.tbl_extend('keep', options, extra_options)
 
   nvim_lsp[server].setup(options)
 end

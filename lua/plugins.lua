@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
 
   -- MISC
   use 'nvim-lua/plenary.nvim'
+  -- Useful for debugging treesitter syntax
+  -- use 'nvim-treesitter/playground'
 
   -- GUI
   use {
@@ -42,6 +44,7 @@ return require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons', -- for file icons
     },
   }
+  use 'machakann/vim-highlightedyank'
 
   -- QOL
   use 'tpope/vim-sleuth'
