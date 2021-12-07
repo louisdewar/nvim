@@ -10,7 +10,6 @@ b.shiftwidth = 4
 o.inccommand = 'nosplit'
 o.mouse = 'a'
 
-
 -- Quick buffer switching
 vim.api.nvim_set_keymap('n', '<leader><leader>', ':b#<CR>', { noremap = true, silent = true })
 

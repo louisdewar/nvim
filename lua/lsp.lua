@@ -1,17 +1,19 @@
 local nvim_lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
-local on_attach = require('lsp.attach');
-local capabilities = require('lsp.capabilities');
+local on_attach = require('lsp.attach')
+local capabilities = require('lsp.capabilities')
 
 local null_ls = require('null-ls')
+
+require('trouble').setup({})
 
 -- vim.lsp.set_log_level('debug')
 
 null_ls.config({
-    sources = {
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.eslint_d
-    }
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.eslint_d,
+  },
 })
 
 -- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
@@ -22,18 +24,18 @@ local servers = {
   pyright = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
-        if client.config.flags then
-          client.config.flags.allow_incremental_sync = true
-        end
-        -- We want eslint to handle formatting
-        client.resolved_capabilities.document_formatting = false
-
-        prev_on_attach(client, bufnr)
+      if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
       end
+      -- We want eslint to handle formatting
+      client.resolved_capabilities.document_formatting = false
+
+      prev_on_attach(client, bufnr)
+    end,
   },
   ccls = {},
   sumneko_lua = {
-    settings = { Lua = { telemetry = { enable = false } } }
+    settings = { Lua = { telemetry = { enable = false } } },
   },
   ['null-ls'] = {},
   texlab = {
@@ -44,20 +46,26 @@ local servers = {
           -- executable = 'tectonic',
           -- args = { '%f', '--synctex', '--keep-logs', '--keep-intermediates', '--outdir', 'out' },
           executable = 'latexmk',
-          args = { '-pdf', '-shell-escape', '-interaction=nonstopmode', '-synctex=1', '-outdir=build', '%f' },
+          args = {
+            '-pdf',
+            '-shell-escape',
+            '-interaction=nonstopmode',
+            '-synctex=1',
+            '-outdir=build',
+            '%f',
+          },
           onSave = true,
-          forwardSearchAfter = true
+          forwardSearchAfter = true,
         },
         forwardSearch = {
           executable = 'zathura',
-          args = { '%p' }
+          args = { '%p' },
         },
-        auxDirectory = 'build'
-      }
-    }
-  }
+        auxDirectory = 'build',
+      },
+    },
+  },
 }
-
 
 for server, extra_options in pairs(servers) do
   local options = {
