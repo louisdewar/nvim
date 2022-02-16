@@ -9,10 +9,13 @@ require('trouble').setup({})
 
 -- vim.lsp.set_log_level('debug')
 
-null_ls.config({
+null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.eslint_d,
+    -- null_ls.builtins.formatting.eslint_d,
+    -- null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.hadolint,
+    null_ls.builtins.diagnostics.shellcheck,
   },
 })
 
@@ -21,6 +24,7 @@ null_ls.config({
 lsp_status.register_progress()
 
 local servers = {
+  eslint = {},
   pyright = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
@@ -37,7 +41,6 @@ local servers = {
   sumneko_lua = {
     settings = { Lua = { telemetry = { enable = false } } },
   },
-  ['null-ls'] = {},
   texlab = {
     settings = {
       texlab = {
@@ -59,7 +62,7 @@ local servers = {
         },
         forwardSearch = {
           executable = 'zathura',
-          args = { '%p' },
+          args = { '--synctex-forward', '%l:1:%f', '%p' },
         },
         auxDirectory = 'build',
       },

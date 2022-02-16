@@ -36,11 +36,6 @@ return function(client, bufnr)
   --buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  -- Trouble (diagnostics)
-  buf_set_keymap('n', '<leader>xx', '<cmd>TroubleToggle<CR>', opts)
-  buf_set_keymap('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<CR>', opts)
-  buf_set_keymap('n', '<leader>xq', '<cmd>TroubleToggle quickfix<CR>', opts)
-
   if client.resolved_capabilities.document_formatting then
     -- Format on save
     vim.cmd([[autocmd BufWritePre <buffer> silent! lua vim.lsp.buf.formatting_sync()]])

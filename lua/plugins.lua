@@ -26,15 +26,13 @@ vim.cmd([[
 ]])
 
 -- Packages to consider adding:
--- - nvim-telescope/telescope.nvim
 -- - tpope/vim-surround
--- - folke/trouble.nvim
--- - romgrk/barbar.nvim
 
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- MISC
+  use('lewis6991/impatient.nvim')
   use('nvim-lua/plenary.nvim')
   -- Useful for debugging treesitter syntax
   -- use 'nvim-treesitter/playground'
@@ -48,11 +46,21 @@ return require('packer').startup(function(use)
   use({
     'kyazdani42/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons', -- for file icons
+      'kyazdani42/nvim-web-devicons',
     },
   })
   use('machakann/vim-highlightedyank')
   use('folke/lsp-colors.nvim')
+
+  use({
+    'nvim-telescope/telescope.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } },
+  })
+
+  use({
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+  })
 
   -- QOL
   use('tpope/vim-sleuth')
@@ -74,6 +82,7 @@ return require('packer').startup(function(use)
   use('hrsh7th/cmp-buffer')
   use('jose-elias-alvarez/null-ls.nvim')
   use('nvim-lua/lsp-status.nvim')
+  use('onsails/lspkind-nvim')
 
   -- LSP (languages)
   use('hrsh7th/cmp-vsnip')
@@ -87,6 +96,9 @@ return require('packer').startup(function(use)
   })
 
   -- Notes
+  use({
+    'nvim-neorg/neorg-telescope',
+  })
   use({
     'nvim-neorg/neorg',
     requires = 'nvim-lua/plenary.nvim',

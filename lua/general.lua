@@ -21,3 +21,6 @@ vim.api.nvim_set_keymap('v', '<C-w>', '<Esc> :w<CR>', { noremap = true, silent =
 
 -- Exit insert
 vim.api.nvim_set_keymap('i', '<C-j>', '<Esc>', { noremap = true, silent = true })
+
+-- Somehow this prevents an annoying "Press ENTER or type a command to continue"
+vim.opt.cmdheight = 2
