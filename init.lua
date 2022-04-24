@@ -1,20 +1,20 @@
 vim.g.mapleader = ' '
 
-require('plugins')
+require('louis.plugins')
 
-require('general')
-require('gui')
-require('lsp')
-require('file_explorer')
-require('fzf')
+require('louis.general')
+require('louis.gui')
+require('louis.lsp')
+require('louis.file_explorer')
+require('louis.fzf')
 
 -- Can't call this file cmp or else there will be an error, maybe create a folder for plugin configuration to avoid this issue
-require('cmp_config')
-require('trouble_config')
-require('treesitter_config')
-require('telescope_config')
+require('louis.cmp_config')
+require('louis.trouble_config')
+require('louis.treesitter_config')
+require('louis.telescope_config')
 
-require('rust')
-require('status_line')
-require('notes')
-require('tabs')
+require('louis.rust')
+require('louis.status_line')
+require('louis.notes')
+require('louis.tabs')

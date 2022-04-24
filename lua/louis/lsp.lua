@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
-local on_attach = require('lsp.attach')
-local capabilities = require('lsp.capabilities')
+local on_attach = require('louis.lsp.attach')
+local capabilities = require('louis.lsp.capabilities')
 
 local null_ls = require('null-ls')
 

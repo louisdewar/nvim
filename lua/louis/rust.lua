@@ -1,7 +1,7 @@
 -- See https://sharksforarms.dev/posts/neovim-rust/
 
-local on_attach = require('lsp.attach')
-local capabilities = require('lsp.capabilities')
+local on_attach = require('louis.lsp.attach')
+local capabilities = require('louis.lsp.capabilities')
 
 local opts = {
   tools = { -- rust-tools options
