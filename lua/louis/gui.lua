@@ -6,6 +6,8 @@ vim.cmd([[
   highlight! link TSInclude GruvboxRed
 ]])
 
+-- vim.cmd[[colorscheme neon]]
+
 -- Make background transparent
 vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 

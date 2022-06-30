@@ -26,6 +26,8 @@ lsp_status.register_progress()
 local servers = {
   eslint = {},
   pyright = {},
+  cssls = {},
+  html = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
       if client.config.flags then
@@ -37,7 +39,11 @@ local servers = {
       prev_on_attach(client, bufnr)
     end,
   },
-  ccls = {},
+  ccls = {
+    init_options = {
+      compilationDatabaseDirectory = "build";
+    }
+  },
   sumneko_lua = {
     settings = { Lua = { telemetry = { enable = false } } },
   },

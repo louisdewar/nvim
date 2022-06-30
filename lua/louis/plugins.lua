@@ -34,6 +34,12 @@ return require('packer').startup(function(use)
   -- MISC
   use('lewis6991/impatient.nvim')
   use('nvim-lua/plenary.nvim')
+  use({
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  })
   -- Useful for debugging treesitter syntax
   -- use 'nvim-treesitter/playground'
 
@@ -43,6 +49,7 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
   use('morhetz/gruvbox')
+  use('rafamadriz/neon')
   use({
     'kyazdani42/nvim-tree.lua',
     requires = {
