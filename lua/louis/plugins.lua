@@ -120,6 +120,8 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use("glepnir/lspsaga.nvim")
+
   -- LSP (languages)
   use('hrsh7th/cmp-vsnip')
   use('hrsh7th/vim-vsnip')

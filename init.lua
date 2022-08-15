@@ -18,5 +18,6 @@ require('louis.status_line')
 require('louis.notes')
 require('louis.tabs')
 require('louis.git')
+require('louis.lspsaga')
 
 -- require('louis.healthchecks')
