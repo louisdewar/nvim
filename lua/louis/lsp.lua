@@ -19,6 +19,9 @@ null_ls.setup({
   },
 })
 
+-- lsp_lines
+vim.diagnostic.config({ virtual_lines = { only_current_line = true }, virtual_text = false })
+
 -- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
 
 vim.cmd([[autocmd BufRead Tiltfile set ft=tiltfile]])

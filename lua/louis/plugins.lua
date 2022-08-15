@@ -91,6 +91,13 @@ return require('packer').startup(function(use)
   use('nvim-lua/lsp-status.nvim')
   use('onsails/lspkind-nvim')
 
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  })
+
   -- LSP (languages)
   use('hrsh7th/cmp-vsnip')
   use('hrsh7th/vim-vsnip')
