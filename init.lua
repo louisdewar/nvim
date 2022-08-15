@@ -17,5 +17,6 @@ require('louis.rust')
 require('louis.status_line')
 require('louis.notes')
 require('louis.tabs')
+require('louis.git')
 
 -- require('louis.healthchecks')

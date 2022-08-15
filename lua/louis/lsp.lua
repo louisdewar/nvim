@@ -7,20 +7,26 @@ local null_ls = require('null-ls')
 
 require('trouble').setup({})
 
--- vim.lsp.set_log_level('debug')
-
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
-    -- null_ls.builtins.formatting.eslint_d,
-    -- null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.shellcheck,
   },
 })
 
 -- lsp_lines
-vim.diagnostic.config({ virtual_lines = { only_current_line = true }, virtual_text = false })
+vim.diagnostic.config({
+  -- virtual_lines = { only_current_line = true },
+  virtual_text = false
+})
+
+vim.keymap.set(
+  "",
+  "<Leader>l",
+  require("lsp_lines").toggle,
+  { desc = "Toggle lsp_lines" }
+)
 
 -- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
 

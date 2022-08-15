@@ -1,13 +1,16 @@
 -- Setup nvim-cmp.
 local cmp = require('cmp')
-local lspkind = require('lspkind')
 
+local lspkind = require('lspkind')
 
 cmp.setup({
   snippet = {
     expand = function(args)
       vim.fn['vsnip#anonymous'](args.body)
     end,
+  },
+  formatting = {
+    format = lspkind.cmp_format()
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -19,7 +22,7 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+      -- behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
   }),
@@ -33,19 +36,3 @@ cmp.setup({
     { name = 'buffer' },
   }),
 })
-
--- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline('/', {
---   sources = {
---     { name = 'buffer' }
---   }
--- })
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
---cmp.setup.cmdline(':', {
---  sources = cmp.config.sources({
---    { name = 'path' }
---  }, {
---    { name = 'cmdline' }
---  })
---})

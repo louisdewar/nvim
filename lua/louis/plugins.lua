@@ -37,9 +37,24 @@ return require('packer').startup(function(use)
   use({
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+        require('Comment').setup({
+          toggler = {
+            line = "<leader>/"
+          },
+          opleader = {
+            line = "<leader>/"
+          }
+        })
     end
   })
+  -- TODO: add descriptions to keymaps to make this useful + figure out errors
+  -- once this is fixed consider adding:
+  -- nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+  use({
+    'AckslD/nvim-whichkey-setup.lua',
+    requires = {'liuchengxu/vim-which-key'},
+  })
+
   -- Useful for debugging treesitter syntax
   -- use 'nvim-treesitter/playground'
 
@@ -48,8 +63,7 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
-  use('morhetz/gruvbox')
-  use('rafamadriz/neon')
+  use('folke/tokyonight.nvim')
   use({
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -64,12 +78,20 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } },
   })
 
-  use({
-    'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  })
+  use({'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'})
 
-  -- QOL
+  use({
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup({
+        show_current_context = true,
+        show_current_context_start = true,
+        show_end_of_line = true,
+        space_char_blankline = " "
+      })
+    end
+  })
+  use('ntpeters/vim-better-whitespace')  -- QOL
   use('tpope/vim-sleuth')
   use('andymass/vim-matchup')
 
@@ -92,7 +114,7 @@ return require('packer').startup(function(use)
   use('onsails/lspkind-nvim')
 
   use({
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "https://github.com/Maan2003/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
     end,
@@ -123,6 +145,15 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   })
+
+  -- Git
+  use({
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  })
+  use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' })
 
   if packer_bootstrap then
     require('packer').sync()

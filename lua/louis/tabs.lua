@@ -2,17 +2,14 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map('n', '<A-,>', ':BufferPrevious<CR>', opts)
-map('n', '<A-.>', ':BufferNext<CR>', opts)
+map('n', '<A-,>', ':BufferLineCyclePrev<CR>', opts)
+map('n', '<A-.>', ':BufferLineCycleNext<CR>', opts)
 -- Re-order to previous/next
-map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
-map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
+map('n', '<A-<>', ':BufferLineMovePrev<CR>', opts)
+map('n', '<A->>', ' :BufferLineMoveNext<CR>', opts)
 
--- Close buffer
-map('n', '<A-c>', ':BufferClose<CR>', opts)
-
--- Magic buffer-picking mode
-map('n', '<C-p>', ':BufferPick<CR>', opts)
-
--- Focus buffer
-map('n', '<A-f>', ':BufferCloseAllButCurrent<CR>', opts)
+map('n', '<leader>bc', ':BufferLinePickClose<CR>', opts)
+map('n', '<leader>bg', ':BufferLinePick<CR>', opts)
+map('n', '<leader>bp', ':BufferLineTogglePin<CR>', opts)
+map('n', '<leader>bsd', ':BufferLineSortByRelativeDirectory<CR>', opts)
+map('n', '<leader>bse', ':BufferLineSortByExtension<CR>', opts)
