@@ -1,12 +1,19 @@
 -- vim.g.nvim_tree_quit_on_open = 1
 
 require('nvim-tree').setup({
-  open_on_setup = true,
+  -- open_on_setup = true,
   diagnostics = {
     enable = true,
+    show_on_dirs = true,
   },
   view = {
-    auto_resize = true,
+    adaptive_size = true,
+    side = 'left',
+    mappings = {
+      list = {
+        { key = 'u', action = 'dir_up' },
+      },
+    },
   },
 })
 

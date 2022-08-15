@@ -21,6 +21,8 @@ null_ls.setup({
 
 -- TODO: add health check (or similar) to tell user to install eslint_d if not installed (npm install -g eslint_d)
 
+vim.cmd([[autocmd BufRead Tiltfile set ft=tiltfile]])
+
 lsp_status.register_progress()
 
 local servers = {
@@ -28,6 +30,7 @@ local servers = {
   pyright = {},
   cssls = {},
   html = {},
+  tilt_ls = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
       if client.config.flags then
