@@ -47,6 +47,8 @@ return require('packer').startup(function(use)
         })
     end
   })
+  use({ "williamboman/mason.nvim" })
+
   -- TODO: add descriptions to keymaps to make this useful + figure out errors
   -- once this is fixed consider adding:
   -- nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
