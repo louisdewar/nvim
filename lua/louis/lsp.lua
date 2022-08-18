@@ -40,6 +40,7 @@ local servers = {
   cssls = {},
   html = {},
   tilt_ls = {},
+  yamlls = {},
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
       if client.config.flags then
@@ -57,7 +58,14 @@ local servers = {
     }
   },
   sumneko_lua = {
-    settings = { Lua = { telemetry = { enable = false } } },
+    settings = {
+      Lua = {
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        runtime = { version = 'LuaJIT' }, telemetry = { enable = false }
+      }
+    },
   },
   texlab = {
     settings = {

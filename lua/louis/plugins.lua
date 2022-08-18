@@ -47,7 +47,21 @@ return require('packer').startup(function(use)
         })
     end
   })
-  use({ "williamboman/mason.nvim" })
+  use('williamboman/mason.nvim')
+  use('airblade/vim-rooter')
+
+  -- Testing
+
+  use({
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-python",
+      "rouge8/neotest-rust",
+    }
+  })
 
   -- TODO: add descriptions to keymaps to make this useful + figure out errors
   -- once this is fixed consider adding:
@@ -66,6 +80,7 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
   use('folke/tokyonight.nvim')
+
   use({
     'kyazdani42/nvim-tree.lua',
     requires = {

@@ -22,5 +22,3 @@ m('n', '<space>gs', '<cmd>Lspsaga signature_help<CR>', opts)
 m('n', '<space>rn', '<cmd>Lspsaga rename<CR>', opts)
 
 m('n', '<leader>ac', '<cmd>Lspsaga code_action<CR>', opts)
-
-

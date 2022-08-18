@@ -20,5 +20,6 @@ require('louis.tabs')
 require('louis.git')
 require('louis.lspsaga')
 require('louis.mason')
+require('louis.tests')
 
 -- require('louis.healthchecks')
