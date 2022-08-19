@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
     end
   })
   use('williamboman/mason.nvim')
+  use('williamboman/mason-lspconfig.nvim')
   use('airblade/vim-rooter')
 
   -- Testing

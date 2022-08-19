@@ -10,9 +10,14 @@ require('trouble').setup({})
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.diagnostics.codespell,
   },
+  on_attach = on_attach,
+  capabilities = capabilities
 })
 
 -- lsp_lines
@@ -36,11 +41,28 @@ lsp_status.register_progress()
 
 local servers = {
   eslint = {},
-  pyright = {},
   cssls = {},
   html = {},
   tilt_ls = {},
   yamlls = {},
+  pyright = {},
+  -- pylsp = {
+  --   on_attach = function (prev_on_attach, client, bufnr)
+  --     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --     prev_on_attach(client, bufnr)
+  --   end,
+  --   settings = {
+  --     -- formatCommand = { "black" },
+  --     pylsp = {
+  --       plugins = {
+  --         pycodestyle = {
+  --           -- ignore = {'W391'},
+  --           -- maxLineLength = 100
+  --         }
+  --       },
+  --     }
+  --   }
+  -- },
   tsserver = {
     on_attach = function(prev_on_attach, client, bufnr)
       if client.config.flags then
