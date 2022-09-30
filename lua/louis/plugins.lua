@@ -174,6 +174,7 @@ return require('packer').startup(function(use)
     end
   })
   use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' })
+  use('f-person/git-blame.nvim')
 
   if packer_bootstrap then
     require('packer').sync()

@@ -14,7 +14,7 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.shellcheck,
-    null_ls.builtins.diagnostics.codespell,
+    -- null_ls.builtins.diagnostics.codespell,
   },
   on_attach = on_attach,
   capabilities = capabilities

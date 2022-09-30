@@ -1,8 +1,13 @@
 vim.o.termguicolors = true
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_dark_sidebar = false
-vim.cmd([[colorscheme tokyonight]])
+require("tokyonight").setup({
+  style = "night",
+  styles = {
+    sidebars = "normal"
+  }
+})
+
+vim.cmd([[colorscheme tokyonight-night]])
 
 require("bufferline").setup({
   options = {

@@ -1,17 +1,19 @@
 local saga = require('lspsaga')
 
-saga.init_lsp_saga()
+saga.init_lsp_saga({
+    -- move_in_saga = { prev = '<C-p>', next = '<C-n>' },
+})
 
-local lspsaga_action = require("lspsaga.action")
+-- local lspsaga_action = require("lspsaga.codeaction")
 local m = vim.keymap.set
 local opts = { silent = true }
 
-m("n", "<C-f>", function()
-    lspsaga_action.smart_scroll_with_saga(1)
-end, { silent = true })
-m("n", "<C-b>", function()
-    lspsaga_action.smart_scroll_with_saga(-1)
-end, { silent = true })
+-- m("n", "<C-f>", function()
+--     lspsaga_action.smart_scroll_with_saga(1)
+-- end, { silent = true })
+-- m("n", "<C-b>", function()
+--     lspsaga_action.smart_scroll_with_saga(-1)
+-- end, { silent = true })
 
 m('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
 m('n', '<space>gr', '<cmd>Lspsaga lsp_finder<CR>', opts)
