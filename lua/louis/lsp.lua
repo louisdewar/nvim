@@ -46,6 +46,10 @@ local servers = {
   tilt_ls = {},
   yamlls = {},
   pyright = {},
+  jsonls = {},
+  flow = {
+    cmd = { "yarn", "run", "flow", "lsp" }
+  },
   -- pylsp = {
   --   on_attach = function (prev_on_attach, client, bufnr)
   --     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -63,17 +67,17 @@ local servers = {
   --     }
   --   }
   -- },
-  tsserver = {
-    on_attach = function(prev_on_attach, client, bufnr)
-      if client.config.flags then
-        client.config.flags.allow_incremental_sync = true
-      end
-      -- We want eslint to handle formatting
-      client.resolved_capabilities.document_formatting = false
-
-      prev_on_attach(client, bufnr)
-    end,
-  },
+  -- tsserver = {
+  --   on_attach = function(prev_on_attach, client, bufnr)
+  --     if client.config.flags then
+  --       client.config.flags.allow_incremental_sync = true
+  --     end
+  --     -- We want eslint to handle formatting
+  --     client.resolved_capabilities.document_formatting = false
+  --
+  --     prev_on_attach(client, bufnr)
+  --   end,
+  -- },
   ccls = {
     init_options = {
       compilationDatabaseDirectory = "build";
