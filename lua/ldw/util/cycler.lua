@@ -1,0 +1,18 @@
+-- M = {}
+-- 
+-- M.cycler_state = {}
+-- 
+-- function M.cycle(name, states, change_handler)
+--   if M.toggle_state[name] == nil then
+--     M.toggle_state[name] = {
+--       current = 1,
+--     }
+--   end
+-- 
+--   current = M.toggle_state[name]["current"]
+-- 
+-- 
+-- 
+-- end
+-- 
+-- return M
