@@ -27,6 +27,7 @@ M.servers = {
       })
     end,
   },
+  jedi_language_server = {}
 }
 
 function M.default_on_attach(client, buf)
