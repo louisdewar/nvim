@@ -27,7 +27,18 @@ M.servers = {
       })
     end,
   },
-  jedi_language_server = {}
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = {},
+            maxLineLength = 200
+          }
+        }
+      }
+    }
+  },
 }
 
 function M.default_on_attach(client, buf)
