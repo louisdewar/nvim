@@ -20,6 +20,7 @@ return {
         "javascript",
         "markdown",
         "markdown_inline",
+        "terraform",
       },
       highlight = {
         enable = true,
