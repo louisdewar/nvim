@@ -43,4 +43,14 @@ return {
       end
     end,
   },
+  {
+    "williamboman/mason-lspconfig",
+    event = { "VeryLazy" },
+    dependencies = {
+      "williamboman/mason.nvim"
+    },
+    opts = {
+      automatic_installation = true,
+    },
+  }
 }
