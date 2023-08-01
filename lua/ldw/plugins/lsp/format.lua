@@ -38,7 +38,7 @@ function M.on_attach(client, buf, server_conf)
     return
   end
 
-  if M.server_conf_allows_formatting(server_conf) then
+  if not M.server_conf_allows_formatting(server_conf) then
     return
   end
 
