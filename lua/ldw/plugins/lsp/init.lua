@@ -2,6 +2,9 @@
 
 return {
   {
+    "hrsh7th/cmp-nvim-lsp",
+  },
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
@@ -9,12 +12,7 @@ return {
       -- { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          return require("ldw.util").has("nvim-cmp")
-        end,
-      },
+      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       require("ldw.plugins.lsp.servers").configure_servers()
