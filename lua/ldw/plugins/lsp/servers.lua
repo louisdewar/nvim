@@ -2,14 +2,16 @@ local M = {}
 
 M.servers = {
   rust_analyzer = {
-    config = {
+    settings = {
       ['rust-analyzer'] = {
         procMacros = {
           enable = true
-        }
+        },
+        cargo = {
+          allFeatures = true
+        },
       }
     }
-    -- on_attach = function(client, buffer) end,
   },
   lua_ls = {
     telemetry = {
