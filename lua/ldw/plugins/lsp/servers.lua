@@ -10,6 +10,9 @@ M.servers = {
         cargo = {
           allFeatures = true
         },
+        checkOnSave = {
+          command = "clippy"
+        }
       }
     }
   },
