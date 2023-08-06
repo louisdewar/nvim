@@ -25,6 +25,7 @@
   "telescope.nvim": { "branch": "master", "commit": "d2e17ba18a6840b7e7079764b282616c3188e0de" },
   "tokyonight.nvim": { "branch": "main", "commit": "1ee11019f8a81dac989ae1db1a013e3d582e2033" },
   "trailblazer.nvim": { "branch": "main", "commit": "674bb6254a376a234d0d243366224122fc064eab" },
+  "tree-sitter-just": { "branch": "main", "commit": "4e5f5f3ff37b12a1bbf664eb3966b3019e924594" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-rooter": { "branch": "master", "commit": "4f52ca556a0b9e257bf920658714470ea0320b7a" },
   "vim-startuptime": { "branch": "master", "commit": "454b3de856b7bd298700de33d79774ca9b9e3875" },

@@ -21,6 +21,7 @@ return {
         "markdown",
         "markdown_inline",
         "terraform",
+        "just",
       },
       highlight = {
         enable = true,
@@ -43,8 +44,17 @@ return {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>",      desc = "Schrink selection",  mode = "x" },
     },
+    cmd = {
+      "TSInstall",
+      "TSUpdate",
+    },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
+    dependencies = { "IndianBoy42/tree-sitter-just" }
+  },
+  {
+    "IndianBoy42/tree-sitter-just",
+    opts = {},
   }
 }
