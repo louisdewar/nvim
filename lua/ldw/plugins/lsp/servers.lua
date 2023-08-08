@@ -46,6 +46,7 @@ M.servers = {
       }
     }
   },
+  pyright = {},
   terraform_lsp = {
     cmd = { "terraform-ls", "serve" },
   },
