@@ -11,7 +11,9 @@ M.servers = {
           allFeatures = true
         },
         checkOnSave = {
-          command = "clippy"
+          command = "clippy",
+          -- To prevent check on save taking a lock on the target dir (blocking cargo build/run)
+          extraArgs = { "--target-dir", "target/ra-check" },
         }
       }
     }
