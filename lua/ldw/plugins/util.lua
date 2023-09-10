@@ -18,9 +18,13 @@ return {
   --     { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
   --   },
   -- },
+
   -- library used by other plugins
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim",  lazy = true },
+  { "sindrets/diffview.nvim", lazy = true },
+  { "ibhagwan/fzf-lua",       lazy = true },
+
   -- makes some plugins dot-repeatable like leap
-  { "tpope/vim-repeat", event = "VeryLazy" },
-  { "echasnovski/mini.nvim", version = "*" }
+  { "tpope/vim-repeat",       event = "VeryLazy" },
+  { "echasnovski/mini.nvim",  version = "*" }
 }

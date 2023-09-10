@@ -68,5 +68,17 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
     }
+  },
+  {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" } },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "sindrets/diffview.nvim",
+      "ibhagwan/fzf-lua",
+    },
+    opts = {},
   }
 }
