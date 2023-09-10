@@ -47,6 +47,7 @@ M.servers = {
   terraform_lsp = {
     cmd = { "terraform-ls", "serve" },
   },
+  ccls = {},
 }
 
 function M.default_on_attach(client, buf)
