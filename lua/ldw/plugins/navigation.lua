@@ -1,11 +1,5 @@
 local telescope = require("ldw.util").telescope
 
--- local function trail(command, opts)
---   return function ()
---     require("trailblazer")[command](table.unpack(opts or {}))
---   end 
--- end
-
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -69,22 +63,5 @@ return {
   {
     "airblade/vim-rooter",
     lazy = false,
-  },
-  {
-    "LeonHeidelbach/trailblazer.nvim",
-    init = function ()
-      require("trailblazer").setup({
-        -- -- Disable default keybindings
-        -- force_mappings = {},
-        -- force_quickfix_mappings = {}
-      })
-    end,
-    -- I can't be bothered listing every command/mapping
-    event = "VeryLazy",
-    -- keys = {
-    --   { "<A-l>", trail("new_trail_mark"), mode = { "n", "i" }, desc = "New trail mark" },
-    --   { "<A-b>", trail("track_back"), mode = { "n", "i" }, desc = "Pop the trail mark stack" },
-    --   { "<A-b>", trail("track_back"), mode = { "n", "i" }, desc = "Track back up the trail mark stack" },
-    -- }
   }
 }
