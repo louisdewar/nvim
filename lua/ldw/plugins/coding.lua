@@ -80,5 +80,21 @@ return {
       "ibhagwan/fzf-lua",
     },
     opts = {},
-  }
+  },
+  {
+    "ruifm/gitlinker.nvim",
+    keys = {
+      {
+        "<leader>gy",
+        desc = "Copy git link",
+        mode = { "n", "v" }
+      },
+    },
+    config = function()
+      require("gitlinker").setup()
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
 }
