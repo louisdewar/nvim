@@ -43,3 +43,7 @@ map("n", "<leader>tf", require("ldw.plugins.lsp.format").toggle_autoformat, { de
 
 -- Quick buffer switching
 map("n", "<leader><leader>", "<cmd>b#<cr>", { desc = "Switch to last buffer" })
+
+-- Swap lines up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

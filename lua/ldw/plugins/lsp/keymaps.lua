@@ -12,7 +12,7 @@ local server_conf_allows_formatting = require("ldw.plugins.lsp.format").server_c
 M.keybinds = {
   { "gd",         vim.lsp.buf.definition,              desc = "Goto Definition", has = "definition" },
   { "<leader>gr", "<cmd>Telescope lsp_references<cr>", desc = "References",      has = "references" },
-  { "<leader>ac", vim.lsp.buf.code_action,             desc = "Code action",     has = "references" },
+  { "<leader>ac", vim.lsp.buf.code_action,             desc = "Code action",     has = "codeAction" },
   { "<leader>f",  format,                              desc = "Format",          has = "documentFormatting",      filter = server_conf_allows_formatting },
   { "<leader>f",  format,                              desc = "Format (Range)",  has = "documentRangeFormatting", filter = server_conf_allows_formatting, mode = "v" },
   { "K",          vim.lsp.buf.hover,                   desc = "Hover",           has = "hover" },
@@ -41,7 +41,7 @@ function M.on_attach(client, buffer, server_conf)
       opts.filter = nil
       opts.silent = true
       opts.buffer = buffer
-      vim.keymap.set(keys.mode or "n", keys[1], keys[2], opts)
+      vim.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
     end
   end
 end
