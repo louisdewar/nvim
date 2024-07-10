@@ -34,21 +34,21 @@ opt.spelllang = { "en" }
 
 opt.shortmess:append { I = true, c = true }
 
-opt.showmode = false -- Dont show mode since we have a statusline
+opt.showmode = false     -- Dont show mode since we have a statusline
 
 opt.termguicolors = true -- True color support
 
-opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.pumblend = 10        -- Popup blend
+opt.pumheight = 10       -- Maximum number of entries in a popup
 
 opt.completeopt = "menu,menuone,noselect"
 
 opt.inccommand = "nosplit" -- preview incremental substitute
 
--- Lines of context (above/below cursor)
-opt.scrolloff = 4
--- Columns of context (either side of cursor)
-opt.sidescrolloff = 8
+-- -- Lines of context (above/below cursor)
+-- opt.scrolloff = 4
+-- -- Columns of context (either side of cursor)
+-- opt.sidescrolloff = 8
 
 -- Persist undo history to file (when file is written)
 opt.undofile = true
@@ -63,7 +63,7 @@ opt.laststatus = 0
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 
 -- Hide * markup for bold and italic
--- opt.conceallevel = 3 
+-- opt.conceallevel = 3
 
 -- Useful for whichkey
 opt.timeout = true

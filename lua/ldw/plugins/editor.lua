@@ -43,5 +43,36 @@ return {
         map('n', '<leader>tb', gs.toggle_current_line_blame, "Toggle show blame")
       end,
     },
+    {
+      "kylechui/nvim-surround",
+      version = "*",
+      event = "VeryLazy",
+      config = function()
+        require("nvim-surround").setup({})
+      end
+    }
+  },
+  {
+    'altermo/ultimate-autopair.nvim',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    dependencies = { 'kylechui/nvim-surround' },
+    branch = 'v0.6',
+    opts = {
+      extensions = {
+        -- -- In 0.7 the typo is fixed
+        -- suround = {
+        --   dosuround = true,
+        --   suround = true,
+        -- },
+        -- config_internal_pairs = {
+        --   { '{', '}', suround = true },
+        --   { '[', ']', suround = true },
+        --   { '(', ')', suround = true },
+        -- },
+      },
+      config_internal_pairs = {
+        { '(', ')', fly = true, suround = true, dosuround = true, newline = true, space = true }
+      },
+    },
   },
 }

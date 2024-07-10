@@ -38,19 +38,38 @@ M.servers = {
     settings = {
       pylsp = {
         plugins = {
-          pycodestyle = {
-            ignore = {},
-            maxLineLength = 200
-          }
+          rope = { enabled = true },
+          pyflakes = { enabled = false },
+          mccabe = { enabled = false },
+          pydocstyle = { enabled = false },
+          autopep8 = { enabled = false },
+          yapf = { enabled = false },
+          flake8 = { enabled = false },
+          pylint = { enabled = false },
+          pycodestyle = { enabled = false },
+          -- == Optional plugins (requires separate installation)
+          -- pip install python-lsp-black
+          black = { enabled = true },
+          -- pip install python-lsp-isort
+          isort = { enabled = true },
         }
       }
     }
   },
-  pyright = {},
+  pyright = {
+    on_new_config = function(new_config, new_root_dir)
+      local python_bin = require("ldw.util.python").find_python(new_root_dir)
+      if python_bin then
+        vim.print("overwriting python bin")
+        new_config.settings = vim.tbl_deep_extend('force', new_config.settings, { python = { pythonPath = python_bin } })
+      end
+    end
+  },
   terraform_lsp = {
     cmd = { "terraform-ls", "serve" },
   },
   ccls = {},
+  yamlls = {},
 }
 
 function M.default_on_attach(client, buf)
@@ -75,9 +94,6 @@ function M.on_attach_autocmd(on_attach)
     end,
   })
 end
-
--- function M.get_servers()
--- end
 
 function M.configure_servers()
   local lspconfig = require("lspconfig")

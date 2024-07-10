@@ -13,6 +13,8 @@ return {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      "folke/neoconf.nvim",
+      -- "rafi/neoconf-venom.nvim",
     },
     config = function()
       require("ldw.plugins.lsp.servers").configure_servers()
@@ -50,5 +52,18 @@ return {
     opts = {
       automatic_installation = true,
     },
-  }
+  },
+  {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf",
+    config = true,
+  },
+  -- -- Auto enters python virtualenv and configures
+  -- {
+  --   "rafi/neoconf-venom.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "folke/neoconf.nvim" },
+  --   config = function(_, opts)
+  --     require("venom").setup()
+  --   end,
+  -- },
 }
