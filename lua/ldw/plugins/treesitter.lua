@@ -22,6 +22,7 @@ return {
         "markdown_inline",
         "terraform",
         "just",
+        "hcl",
       },
       highlight = {
         enable = true,
