@@ -34,28 +34,6 @@ M.servers = {
       })
     end,
   },
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          rope = { enabled = true },
-          pyflakes = { enabled = false },
-          mccabe = { enabled = false },
-          pydocstyle = { enabled = false },
-          autopep8 = { enabled = false },
-          yapf = { enabled = false },
-          flake8 = { enabled = false },
-          pylint = { enabled = false },
-          pycodestyle = { enabled = false },
-          -- == Optional plugins (requires separate installation)
-          -- pip install python-lsp-black
-          black = { enabled = true },
-          -- pip install python-lsp-isort
-          isort = { enabled = true },
-        }
-      }
-    }
-  },
   pyright = {
     on_new_config = function(new_config, new_root_dir)
       local python_bin = require("ldw.util.python").find_python(new_root_dir)
@@ -70,6 +48,10 @@ M.servers = {
   },
   ccls = {},
   yamlls = {},
+  bicep = {
+    cmd = { "bicep-lsp" },
+  },
+  ruff = {},
 }
 
 function M.default_on_attach(client, buf)
