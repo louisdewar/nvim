@@ -18,6 +18,7 @@ return {
         "cpp",
         "c",
         "javascript",
+        "typescript",
         "markdown",
         "markdown_inline",
         "terraform",

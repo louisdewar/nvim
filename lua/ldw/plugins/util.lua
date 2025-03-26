@@ -14,5 +14,5 @@ return {
 
   -- makes some plugins dot-repeatable like leap
   { "tpope/vim-repeat",       event = "VeryLazy" },
-  { "echasnovski/mini.nvim",  version = "*" }
+  { "echasnovski/mini.nvim",  version = "*",     event = "VeryLazy" }
 }

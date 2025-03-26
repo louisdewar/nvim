@@ -34,6 +34,7 @@ function M.on_attach(client, buf, server_conf)
       client.config
       and client.config.capabilities
       and client.config.capabilities.documentFormattingProvider == false
+      and not vim.list_contains(server_conf.additional_capabilities or {}, "documentFormatting")
   then
     return
   end
@@ -42,7 +43,7 @@ function M.on_attach(client, buf, server_conf)
     return
   end
 
-  if client.supports_method("textDocument/formatting") then
+  if client.supports_method("textDocument/formatting") or vim.list_contains(server_conf.additional_capabilities or {}, "documentFormatting") then
     -- Format on write
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),

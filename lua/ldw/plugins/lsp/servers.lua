@@ -23,7 +23,10 @@ M.servers = {
       enable = false,
     }
   },
-  tsserver = {
+  biome = {
+    additional_capabilities = { "documentFormatting" }
+  },
+  ts_ls = {
     allow_formatting = false,
   },
   eslint = {
@@ -34,24 +37,41 @@ M.servers = {
       })
     end,
   },
-  pyright = {
-    on_new_config = function(new_config, new_root_dir)
-      local python_bin = require("ldw.util.python").find_python(new_root_dir)
-      if python_bin then
-        vim.print("overwriting python bin")
-        new_config.settings = vim.tbl_deep_extend('force', new_config.settings, { python = { pythonPath = python_bin } })
-      end
-    end
-  },
+  -- TOML
+  taplo = {},
+  -- pyright = {
+  --   on_new_config = function(new_config, new_root_dir)
+  --     local python_bin = require("ldw.util.python").find_python(new_root_dir)
+  --     if python_bin then
+  --       vim.print("overwriting python bin")
+  --       new_config.settings = vim.tbl_deep_extend('force', new_config.settings, { python = { pythonPath = python_bin } })
+  --     end
+  --   end
+  -- },
+  pyright = {},
+  -- basedpyright = {},
+  -- pylyzer = {
+  --   python = {
+  --     checkOnType = false,
+  --     diagnostics = true,
+  --     inlayHints = true,
+  --     smartCompletion = true
+  --   }
+  -- },
   terraform_lsp = {
     cmd = { "terraform-ls", "serve" },
   },
   ccls = {},
   yamlls = {},
+  jsonls = {
+    -- Don't want it to conflict with biome, TODO: enable/disable depending on whether there's a biome.json{,c} in the tree (i.e. the biome client is handling formatting)
+    allow_formatting = false,
+  },
   bicep = {
     cmd = { "bicep-lsp" },
   },
   ruff = {},
+  tailwindcss = {},
 }
 
 function M.default_on_attach(client, buf)

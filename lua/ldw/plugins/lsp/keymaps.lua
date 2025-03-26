@@ -32,9 +32,14 @@ function M.on_attach(client, buffer, server_conf)
     end
   end
 
+  -- Some servers have dynamically registered capabilities, I don't want to handle that properly right now because
+  -- there might be some changes in nvim to make that easier in future, so I'll add a config option that lets me do
+  -- it manually for language servers that I specify.
+  local additional_capabilities = server_conf.additional_capabilities or {}
+
   for _, keys in pairs(keymaps) do
     if (not keys.filter or keys.filter(server_conf))
-        and (not keys.has or client.server_capabilities[keys.has .. "Provider"]) then
+        and (not keys.has or client.server_capabilities[keys.has .. "Provider"] or vim.list_contains(additional_capabilities, keys.has)) then
       local opts = Keys.opts(keys)
       ---@diagnostic disable-next-line: no-unknown
       opts.has = nil
