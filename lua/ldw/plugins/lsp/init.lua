@@ -21,17 +21,17 @@ return {
     opts = {},
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = { "VeryLazy" },
-    dependencies = {
-      "williamboman/mason.nvim",
-    },
-    opts = {
-      ensure_installed = { "rust_analyzer@nightly" },
-      automatic_installation = true,
-    },
-  },
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   event = { "VeryLazy" },
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --   },
+  --   opts = {
+  --     ensure_installed = { "rust_analyzer@nightly" },
+  --     automatic_installation = true,
+  --   },
+  -- },
   {
     "folke/neoconf.nvim",
     cmd = "Neoconf",

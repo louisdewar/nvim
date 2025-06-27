@@ -14,13 +14,13 @@ function M.toggle_autoformat()
   end
 end
 
-function M.format()
-  vim.lsp.buf.format()
+function M.format(client_id)
+  vim.lsp.buf.format({ async = false, id = client_id })
 end
 
-function M.autoformat()
+function M.autoformat(client_id)
   if M.autoformat then
-    M.format()
+    M.format(client_id)
   end
 end
 
@@ -44,11 +44,11 @@ function M.on_attach(client, buf, server_conf)
   end
 
   if client.supports_method("textDocument/formatting") or vim.list_contains(server_conf.additional_capabilities or {}, "documentFormatting") then
-    -- Format on write
+    -- -- Format on write
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),
       buffer = buf,
-      callback = M.autoformat,
+      callback = function() M.autoformat(client.id) end,
     })
   end
 end

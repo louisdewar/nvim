@@ -24,19 +24,20 @@ M.servers = {
     }
   },
   biome = {
+    cmd = { "pnpm", "exec", "biome", "lsp-proxy" },
     additional_capabilities = { "documentFormatting" }
   },
   ts_ls = {
     allow_formatting = false,
   },
-  eslint = {
-    on_attach = function(_, bufnr)
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        command = "EslintFixAll",
-      })
-    end,
-  },
+  -- eslint = {
+  --   on_attach = function(_, bufnr)
+  --     vim.api.nvim_create_autocmd("BufWritePre", {
+  --       buffer = bufnr,
+  --       command = "EslintFixAll",
+  --     })
+  --   end,
+  -- },
   -- TOML
   taplo = {},
   -- pyright = {
@@ -63,10 +64,10 @@ M.servers = {
   },
   ccls = {},
   yamlls = {},
-  jsonls = {
-    -- Don't want it to conflict with biome, TODO: enable/disable depending on whether there's a biome.json{,c} in the tree (i.e. the biome client is handling formatting)
-    allow_formatting = false,
-  },
+  -- jsonls = {
+  --   -- Don't want it to conflict with biome, TODO: enable/disable depending on whether there's a biome.json{,c} in the tree (i.e. the biome client is handling formatting)
+  --   allow_formatting = false,
+  -- },
   bicep = {
     cmd = { "bicep-lsp" },
   },
@@ -78,6 +79,7 @@ function M.default_on_attach(client, buf)
   -- Plugin specific extensions (if applicable)]
   local server = M.servers[client.name] or {}
 
+  -- TEMP disable format to use new autocmd
   require("ldw.plugins.lsp.format").on_attach(client, buf, server)
   require("ldw.plugins.lsp.keymaps").on_attach(client, buf, server)
 
@@ -86,14 +88,28 @@ function M.default_on_attach(client, buf)
   end
 end
 
--- Create an autocmd to run on LspAttach that runs the default on_attach action
-function M.on_attach_autocmd(on_attach)
+-- -- Create an autocmd to run on LspAttach that runs the default on_attach action
+-- function M.on_attach_autocmd(on_attach)
+--   vim.api.nvim_create_autocmd("LspAttach", {
+--     callback = function(args)
+--       local buffer = args.buf
+--       local client = vim.lsp.get_client_by_id(args.data.client_id)
+--       on_attach(client, buffer)
+--     end,
+--   })
+-- end
+
+function M.setup_format_autocmd()
   vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp", { clear = true }),
     callback = function(args)
-      local buffer = args.buf
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      on_attach(client, buffer)
-    end,
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format { async = false, id = args.data.client_id }
+        end,
+      })
+    end
   })
 end
 
@@ -101,6 +117,7 @@ function M.configure_servers()
   local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp")
       .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- M.setup_format_autocmd()
 
   for server, extra_options in pairs(M.servers) do
     local server_opts = vim.tbl_deep_extend("force", {

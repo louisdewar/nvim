@@ -148,4 +148,17 @@ return {
     version = '1.*',
     opts = {},
   },
+  {
+    "sbdchd/neoformat",
+    event = { "BufReadPre", "BufNewFile" },
+    setup = function()
+      vim.g.try_node_exe = 1
+      vim.cmd([[
+        augroup fmt
+          autocmd!
+          autocmd BufWritePre * undojoin | Neoformat
+        augroup END
+      ]])
+    end
+  }
 }
