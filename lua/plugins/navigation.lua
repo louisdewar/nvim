@@ -3,7 +3,7 @@ local function telescope_find_files(cwd)
     local utils = require("telescope.utils")
     require("telescope.builtin").find_files({
       cwd = cwd and utils.buffer_dir() or nil,
-      find_command = { "rg", "--ignore", "--hidden", "--files", "--glob", "!.git/" },
+      find_command = { "rg", "--ignore", "--hidden", "--files", "--glob", "!.git/", "--max-filesize=1M" },
     })
   end
 end
@@ -30,6 +30,26 @@ return {
         desc = "Find Files (cur dir)",
       },
     },
+    config = function()
+      local telescopeConfig = require("telescope.config")
+
+      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, "--hidden")
+      table.insert(vimgrep_arguments, "--glob")
+      table.insert(vimgrep_arguments, "!**/.git/*")
+      table.insert(vimgrep_arguments, "--max-filesize=1M")
+
+      require("telescope").setup({
+        defaults = {
+          vimgrep_arguments = vimgrep_arguments,
+        },
+      })
+    end,
+    -- opts = {
+    --   defaults = {
+    --     vimgrep_arguments = { "--ignore", "--hidden", "--files", "--glob", "!.git/", "--max-filesize=1M" },
+    --   },
+    -- },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",

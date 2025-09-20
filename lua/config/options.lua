@@ -23,3 +23,16 @@ opt.updatetime = 200
 -- Put new windows below/right of current
 opt.splitbelow = true
 opt.splitright = true
+
+opt.list = true
+
+-- TODO: decide
+-- OR: set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+local space = "·"
+opt.listchars:append({
+  -- tab = "│─",
+  multispace = space,
+  -- lead = space,
+  trail = space,
+  nbsp = space,
+})
