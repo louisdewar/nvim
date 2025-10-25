@@ -33,7 +33,7 @@ M.configure_servers = function()
     return vim.lsp.config.biome.cmd(dispatchers, config)
   end
 
-  vim.lsp.enable({ "lua_ls", "biome", "ts_ls", "eslint", "tailwindcss" })
+  vim.lsp.enable({ "lua_ls", "biome", "ts_ls", "eslint", "tailwindcss", "rust_analyzer" })
 end
 
 M.configure_lsp = function()
