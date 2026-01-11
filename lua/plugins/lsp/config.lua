@@ -40,7 +40,27 @@ M.configure_servers = function()
       }
     }
   })
-  vim.lsp.enable({ "lua_ls", "biome", "ts_ls", "eslint", "tailwindcss", "rust_analyzer" })
+  vim.lsp.config('oxlint', {
+    cmd = function(dispatchers, config)
+      local search_dir = (config or {}).root_dir or vim.fn.getcwd()
+      local node_modules = vim.fs.find("node_modules", {
+        path = search_dir,
+        upward = true,
+        type = "directory",
+      })[1]
+
+      if node_modules then
+        local oxc_path = vim.fs.joinpath(node_modules, ".bin", "oxc_language_server")
+        if vim.fn.executable(oxc_path) == 1 then
+          return vim.lsp.rpc.start({ oxc_path }, dispatchers)
+        end
+      end
+
+      return vim.lsp.rpc.start({ "oxc_language_server" }, dispatchers)
+    end,
+  })
+
+  vim.lsp.enable({ "lua_ls", "biome", "ts_ls", "eslint", "tailwindcss", "rust_analyzer", "oxlint", "taplo" })
 end
 
 M.configure_lsp = function()
