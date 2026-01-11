@@ -7,6 +7,7 @@ return {
     opts = {
       rename = { enabled = true },
       picker = {},
+      explorer = {},
     },
     keys = {
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Switch Buffer" },
@@ -15,6 +16,8 @@ return {
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
       { "<leader>fF", function() Snacks.picker.files({ hidden = true, cwd = vim.fn.expand("%:p:h") }) end, desc = "Find Files (cwd)" },
+      { "<leader>fe", function() Snacks.explorer() end, desc = "Explorer" },
+      { "<leader>fE", function() Snacks.explorer({ cwd = vim.fn.expand("%:p:h") }) end, desc = "Explorer (cwd)" },
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
       { "<leader>gr", function() Snacks.picker.lsp_references() end, desc = "References" },
     },
