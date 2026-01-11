@@ -1,8 +1,6 @@
 local M = {}
 
 M.configure_keybinds = function()
-  vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
-  vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>")
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
   vim.keymap.set("n", "<leader>ac", vim.lsp.buf.code_action)
 end
