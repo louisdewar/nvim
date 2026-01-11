@@ -31,6 +31,15 @@ M.configure_servers = function()
     return vim.lsp.config.biome.cmd(dispatchers, config)
   end
 
+  vim.lsp.config('rust_analyzer', {
+    settings = {
+      ['rust-analyzer'] = {
+        check = {
+          command = "clippy",
+        },
+      }
+    }
+  })
   vim.lsp.enable({ "lua_ls", "biome", "ts_ls", "eslint", "tailwindcss", "rust_analyzer" })
 end
 
