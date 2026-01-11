@@ -6,3 +6,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 1000 }
   end,
 })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = vim.api.nvim_create_augroup('checktime_on_bufenter', {}),
+  desc = 'Check if buffer changed on disk when entering',
+  command = 'checktime %',
+})
